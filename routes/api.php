@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortalController;
+use App\Http\Controllers\KorisnikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Http\Controllers\PortalController;
 |
 */
 
-Route::resource('portal', PortalController::class)->only('index', 'destroy', 'show');
+Route::resource('portal', PortalController::class)->only('index', 'destroy', 'show', 'store');
+Route::resource('korisnik', KorisnikController::class)->only('index', 'destroy');
 
 
 

@@ -10,6 +10,13 @@ class Portal extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'url',
+        'naziv',
+        'brojClanova',
+    ];
+
+
     public function korisnici()
     {
         return $this->hasMany(Korisnik::class);

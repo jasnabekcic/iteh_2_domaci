@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Portal;
+use App\Models\Korisnik;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
-class PortalController extends Controller
+class KorisnikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class PortalController extends Controller
     public function index()
     {
         return response()->json([
-            'portali' => Portal::all()
+            'korisnici' => Korisnik::all()
         ]);
     }
 
@@ -38,51 +37,27 @@ class PortalController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'url' => 'required',
-            'naziv' => 'required',
-            'brojClanova' => 'required'
-        ]);
-
-
-        if ($validator->fails()) {
-            return response()->json([
-                'poruka' => $validator->errors()
-            ]);
-        }
-
-        $portal = Portal::create([
-            'url' => $request->url,
-            'naziv' => $request->naziv,
-            'brojClanova' => $request->brojClanova
-        ]);
-
-
-        return response()->json([
-            'Portal uspešno kreiran' => $portal
-        ]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Portal  $portal
+     * @param  \App\Models\Korisnik  $korisnik
      * @return \Illuminate\Http\Response
      */
-    public function show(Portal $portal)
+    public function show(Korisnik $korisnik)
     {
-        return response()->json([
-            'portal' => Portal::find($portal)
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Portal  $portal
+     * @param  \App\Models\Korisnik  $korisnik
      * @return \Illuminate\Http\Response
      */
-    public function edit(Portal $portal)
+    public function edit(Korisnik $korisnik)
     {
         //
     }
@@ -91,10 +66,10 @@ class PortalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Portal  $portal
+     * @param  \App\Models\Korisnik  $korisnik
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Portal $portal)
+    public function update(Request $request, Korisnik $korisnik)
     {
         //
     }
@@ -102,15 +77,15 @@ class PortalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Portal  $portal
+     * @param  \App\Models\Korisnik  $korisnik
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Portal $portal)
+    public function destroy(Korisnik $korisnik)
     {
-        $portal->delete();
+        $korisnik->delete();
 
         return response()->json([
-            'poruka' => 'Portal uspešno obrisan'
+            'poruka' => 'Korisnik uspešno obrisan'
         ]);
     }
 }
